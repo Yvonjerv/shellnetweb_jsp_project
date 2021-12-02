@@ -11,6 +11,15 @@
 //    VUser user = udao.getVUserById(userid);
 //    request.setAttribute("adminuser", user);
 
+
+//Permission check
+    if(loginuser==null ||loginuser.getUtid()!=1){
+        RequestDispatcher rd = request.getRequestDispatcher("prompt.jsp");
+        request.setAttribute("promptMsg","You don't have permission");
+        request.setAttribute("backUrl","beikemain.jsp");
+        rd.forward(request,response);
+        return;
+    }
     HotelDAO tdao = new HotelDaoImpl();
     List<THotel> list = tdao.getHotelByUser(loginuser.getUserid());
     request.setAttribute("hotelList", list);

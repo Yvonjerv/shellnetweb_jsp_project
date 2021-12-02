@@ -4,6 +4,32 @@
 <%
 	String id = request.getParameter("hotelid");
 
+	//get current login user and all hotel information of this login user
+	VUser loginuser = (VUser)session.getAttribute("loginuser");
+	//Permission check
+	if(loginuser==null ||loginuser.getUtid()!=1){
+		RequestDispatcher rd = request.getRequestDispatcher("prompt.jsp");
+		request.setAttribute("promptMsg","You don't have permission");
+		request.setAttribute("backUrl","beikemain.jsp");
+		rd.forward(request,response);
+		return;
+	}else{
+		if(id==null || id.equals("")){
+			//it represnt this page will add new hotel
+		}else {
+			int hotelid = Integer.parseInt(id);
+			HotelDAO hdao = new HotelDaoImpl();
+			THotel hotel = hdao.getHotelByid(hotelid);
+			if (!hotel.getUserid().equals(loginuser.getUserid())) {
+				RequestDispatcher rd = request.getRequestDispatcher("prompt.jsp");
+				request.setAttribute("promptMsg", "You don't have permission");
+				request.setAttribute("backUrl", "beikemain.jsp");
+				rd.forward(request, response);
+				return;
+			}
+		}
+	}
+
 	if (id==null || id.equals("")){
 		//do nothing
 	}else{
@@ -15,6 +41,7 @@
 			request.setAttribute("hotel", hotel);
 		}
 	}
+
 %>
 <!DOCTYPE html>
 <html>
