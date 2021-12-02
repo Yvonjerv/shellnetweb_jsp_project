@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+send some info from one page to another page -------REQUEST
+send some info from one page to all page --------SESSION
+send some info from one page to all users -------application
+
+JSP OBJECTS
+are object dat don't need to be created
+9
+request+
+response+
+session+
+application+
+out
+pagecontext
+config
+page
+exception
+
+REQUEST
+transmit with key value pairs
+?key=value&key=value&...
+
+addAttribute (key, value)
+value = getAttribute(key)
+removeAttribute(key)
+
+SESSION
+during when visiting the website
+after closing the website the session will be destroyed
+session domain is user level
+
+APPLICATION
+domain is the application level (web project level)
+when the application server startup an application object isi created and
+when the application server shutdown the application object is destroyed
+application server is tomcat server, many web project can run in the tomcat server
+each web [project which run in the tomcat server have only one application
+all user share one application of the same web project
+
+
+JSTL
+
+JAVA SERVER TAG LIBRARY
+Common functions of web appplications and customized tag
+XML query
+<!--<c:out>--> output
+<!--<c:if>--> condition selection
+<!--<c:forEach></c:forEach>-->
+<!--<c:when></c:when> -->
+used to simplify the flow control statements
+used with EL expression
+
+</body>
+</html>
