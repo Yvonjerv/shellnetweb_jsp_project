@@ -57,23 +57,22 @@ public class HotelDaoImpl implements HotelDAO {
             String sql = "select * from t_hotel where ";
             String whereString = "";
             if (position != null) {
-                whereString += "(city like '%" +position+"%' "+
-                        "or detailaddr like '%"+position+"%')";
+                whereString += "(city like '%" + position + "%' " +
+                        "or detailaddr like '%" + position + "%')";
             }
-            if (hotelname !=null){
-                if (whereString.equals("")){
-                    whereString+="hotelname like '%"+hotelname+"%'" ;
-                }else{
-                    whereString+="and hotelname like '%"+hotelname+"%'";
+            if (hotelname != null) {
+                if (whereString.equals("")) {
+                    whereString += "hotelname like '%" + hotelname + "%'";
+                } else {
+                    whereString += "and hotelname like '%" + hotelname + "%'";
                 }
             }
-            sql +=whereString;
+            sql += whereString;
             ResultSet rs = dao.select(sql, null);
-            List<THotel> list= THotel.toList(rs);
+            List<THotel> list = THotel.toList(rs);
             dao.close();
             return list;
         }
-
     }
 
     @Override

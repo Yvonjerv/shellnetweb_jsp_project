@@ -2,11 +2,11 @@
 <%@include file="jspresources.jsp" %>
 
 <%
-	String id = request.getParameter("hotelid");
+    String id = request.getParameter("hotelid");
 
-	//get current login user and all hotel information of this login user
-	VUser loginuser = (VUser)session.getAttribute("loginuser");
-	//Permission check
+    //get current login user and all hotel information of this login user
+    VUser loginuser = (VUser)session.getAttribute("loginuser");
+    //Permission check
 	if(loginuser==null ||loginuser.getUtid()!=1){
 		RequestDispatcher rd = request.getRequestDispatcher("prompt.jsp");
 		request.setAttribute("promptMsg","You don't have permission");
@@ -30,17 +30,17 @@
 		}
 	}
 
-	if (id==null || id.equals("")){
-		//do nothing
-	}else{
-		int hotelid = Integer.parseInt(id);
-		HotelDAO hdao = new HotelDaoImpl();
-		THotel hotel = hdao.getHotelByid(hotelid);
+    if (id==null || id.equals("")){
+        //do nothing
+    }else{
+        int hotelid = Integer.parseInt(id);
+        HotelDAO hdao = new HotelDaoImpl();
+        THotel hotel = hdao.getHotelByid(hotelid);
 
-		if (hotel!=null || hotel.getHotelname()!=null){
-			request.setAttribute("hotel", hotel);
-		}
-	}
+        if (hotel!=null || hotel.getHotelname()!=null){
+            request.setAttribute("hotel", hotel);
+        }
+    }
 
 %>
 <!DOCTYPE html>
@@ -82,7 +82,7 @@
 			});
 		});
 	</script>
-	<!--begin to css of page-->
+    <!--begin to css of page-->
 	<style type="text/css">
 		/* Border styles */
 		.title{
@@ -298,11 +298,11 @@
 								</tr>
 								<tr>
 									<td class="s1" >HOTEL FEATURES</td>
-									<td><input class="editbox" type="number" name="features" value="${hotel.features}" ></td>
+									<td><input class="editbox" type="text" name="features" value="${hotel.features}" ></td>
 								</tr>
 								<tr>
 									<td class="s1" >HOTEL SERVICE</td>
-									<td><input class="editbox" type="number" name="server" value="${hotel.server}" ></td>
+									<td><input class="editbox" type="text" name="server" value="${hotel.server}" ></td>
 								</tr>
 								
 								<tr>

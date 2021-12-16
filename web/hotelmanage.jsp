@@ -293,7 +293,7 @@
 <body>
 <center>
     <div class="title">
-        <div style="float:left; margin-left:20px;line-height:30px;"> <span
+        <div style="float:left; margin-left:20px;line-height:30px;"><span
                 style="font-size:28px; color:#FF7F00; font-style: italic;font-weight: 800;">SHELL NET</span></div>
     </div>
     <!--begin to system menu -->

@@ -36,13 +36,13 @@ public class FileUploadServlet extends HttpServlet {
         }
 
         ServletFileUpload upload = new ServletFileUpload(
-                new DiskFileItemFactory());// 解析    //创建上传文件对象
+                new DiskFileItemFactory());//
 
         try {
             List itemList = upload.parseRequest(request);
             for (Iterator it = itemList.iterator(); it.hasNext();) {
                 FileItem item = (FileItem) it.next();
-                if (!item.isFormField())// 如果是非表单数据
+                if (!item.isFormField())//
                 {
                     if(item.getName().length()<=0)return;
 
